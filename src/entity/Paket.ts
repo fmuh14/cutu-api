@@ -6,11 +6,11 @@ export class Paket {
   id: number
 
   @Column()
-  name: String
+  nama: String
 
   @Column()
   detail: String
 
   @Column()
-  price: number
+  harga: number
 }
