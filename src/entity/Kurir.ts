@@ -2,7 +2,7 @@ import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm"
 import { Transaksi } from "./Transaksi"
 
 @Entity()
-export class Paket {
+export class Kurir {
   @PrimaryGeneratedColumn()
   id: number
 
@@ -10,12 +10,12 @@ export class Paket {
   name: String
 
   @Column()
-  detail: String
+  phone_number: String
 
   @Column()
-  price: number
+  is_ready: boolean
 
   //One to Many relation
-  @OneToMany(() => Transaksi, (transaksi) => transaksi.paket)
+  @OneToMany(() => Transaksi, (transaksi) => transaksi.kurir)
   transaksi: Transaksi[]
 }

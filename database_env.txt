@@ -1,0 +1,11 @@
+PORT = 3000
+DB_USERNAME = "fpromyid_cutu"
+DB_PASSWORD = "Dj#Ekxp;U&%Y"
+DB_DATABASE = "fpromyid_cutu"
+DB_PORT = 3306
+DB_TYPE = "mysql"
+DB_HOST = "103.28.53.75"
+
+
+SELECT KURIR RANDOM :
+SELECT * FROM kurir WHERE is_ready=true ORDER BY RAND() LIMIT 1;

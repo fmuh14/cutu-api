@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from "typeorm"
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn, OneToMany } from "typeorm"
+import { Address } from "./Address"
 import { Kecamatan } from "./Kecamatan"
 
 @Entity()
@@ -18,5 +19,7 @@ export class Kelurahan {
   })
   kecamatan: Kecamatan
 
-
+  // //One to Many relation
+  // @OneToMany(() => Address, (address) => address.kelurahan)
+  // address: Address[]
 }

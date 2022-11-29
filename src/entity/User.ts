@@ -1,10 +1,11 @@
 import { Entity, Column, PrimaryColumn, OneToMany } from "typeorm"
 import { Address } from "./Address"
+import { Transaksi } from "./Transaksi"
 
 @Entity()
 export class User {
 
-  @PrimaryColumn()
+  @PrimaryColumn({ insert: false })
   id: string
 
   @Column()
@@ -21,5 +22,9 @@ export class User {
 
   //One to Many relation
   @OneToMany(() => Address, (address) => address.user)
-  address: Address
+  address: Address[]
+
+  //One to Many relation
+  @OneToMany(() => Transaksi, (transaksi) => transaksi.user)
+  transaksi: Transaksi[]
 }

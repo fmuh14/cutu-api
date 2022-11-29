@@ -3,10 +3,7 @@ import { Request, Response, NextFunction } from "express"
 import * as cors from 'cors';
 import { AppDataSource } from "./config/data-source";
 import { Routes } from "./routes"
-import { User } from "./entity/User";
-import { SigninController } from "./controllers/SigninController";
-import { Paket } from "./entity/Paket";
-
+import 'dotenv/config'
 
 AppDataSource.initialize().then(async () => {
   const app = express();
@@ -34,8 +31,8 @@ AppDataSource.initialize().then(async () => {
 
   //set port, listen for requests
   const PORT = process.env.PORT || 8080;
-  app.listen(PORT, () => {
-    console.log(`Server Online | Server is running on port ${PORT}.`);
+  app.listen(process.env.PORT, () => {
+    console.log(`running on ${process.env.PORT}`)
   });
 
 }).catch(error => console.log(error))
