@@ -11,7 +11,7 @@ export class Transaksi {
   id: string
 
   @CreateDateColumn()
-  tanggal_pemesanan: string
+  tanggal_pemesanan: Date
 
   @Column()
   status: string
@@ -30,6 +30,9 @@ export class Transaksi {
 
   @Column()
   total_harga: number
+
+  @Column()
+  invoice_id: string
 
   //Many to one relation
   @ManyToOne(() => User, (user) => user.transaksi)

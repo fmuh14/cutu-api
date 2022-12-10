@@ -41,10 +41,10 @@ export const Routes = [{
   action: "updateProfile"
 },
 {
-  method: "post",
-  route: "/api/:user_id/transaksi",
+  method: "get",
+  route: "/api/user/:user_id/transaksi",
   controller: TransaksiController,
-  action: "addTransaksi"
+  action: "getAllTransaksiByUser"
 },
 {
   method: "post",
@@ -54,8 +54,68 @@ export const Routes = [{
 },
 {
   method: "get",
+  route: "/api/address/kecamatankelurahan",
+  controller: AddressController,
+  action: "getKecamatanKelurahan"
+},
+{
+  method: "post",
+  route: "/api/address/update",
+  controller: AddressController,
+  action: "updateAddress"
+},
+{
+  method: "post",
+  route: "/api/address/delete",
+  controller: AddressController,
+  action: "deleteAddress"
+},
+{
+  method: "get",
+  route: "/api/address/id/:address_id",
+  controller: AddressController,
+  action: "getAddressById"
+},
+{
+  method: "get",
   route: "/api/address/:user_id",
   controller: AddressController,
   action: "getAddress"
+},
+{
+  method: "get",
+  route: "/api/payment/:invoice_id/link",
+  controller: TransaksiController,
+  action: "getInvoiceURL"
+},
+{
+  method: "post",
+  route: "/api/payment/callback",
+  controller: TransaksiController,
+  action: "paymentCallback"
+},
+{
+  method: "get",
+  route: "/api/admin/transaksi",
+  controller: TransaksiController,
+  action: "getAllTransaksi"
+},
+{
+  method: "post",
+  route: "/api/transaksi/delete",
+  controller: TransaksiController,
+  action: "deleteTransaksi"
+},
+{
+  method: "post",
+  route: "/api/transaksi/add",
+  controller: TransaksiController,
+  action: "addTransaksi"
+},
+{
+  method: "get",
+  route: "/api/transaksi/:transaksi_id",
+  controller: TransaksiController,
+  action: "getTransaksi"
 },
 ]

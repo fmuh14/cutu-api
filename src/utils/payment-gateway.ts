@@ -1,20 +1,11 @@
 import Xendit = require("xendit-node")
+import 'dotenv/config'
+
 const x = new Xendit({
-  secretKey: 'xnd_development_XHUPUtAkC0IJ6FLXoVCBQgSF3oVzcboSnnoDhL5yhBru3YV4W5hu9fvoemoQ9',
+  secretKey: process.env.XENDIT_SECRETKEY,
 });
 
-const { VirtualAcc } = x;
-const vaSpecificOptions = {};
-const va = new VirtualAcc(vaSpecificOptions);
+const { Invoice } = x;
+const invoiceSpecificOptions = {};
+export const invoice = new Invoice(invoiceSpecificOptions);
 
-const resp = async () => {
-  const result = await va.createFixedVA({
-    externalID: 'va-1475804036622',
-    bankCode: 'BNI',
-    name: 'Michael Chen',
-  })
-
-  console.log(result)
-};
-
-resp()

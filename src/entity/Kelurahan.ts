@@ -11,6 +11,9 @@ export class Kelurahan {
   @Column()
   name: string
 
+  @Column({ insert: false })
+  kecamatan_id: string
+
   //Many to one relation
   @ManyToOne(() => Kecamatan, (kecamatan) => kecamatan.kelurahan)
   @JoinColumn({

@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from "express"
 import { User } from "../entity/User"
 import { AppDataSource } from "../config/data-source"
 import { validateEmail, validatePassword, validatePasswordLength, validatePhoneNumber } from "../utils/validation"
+import { customAlphabet } from "nanoid"
 
 export class UserController {
 
@@ -108,6 +109,18 @@ export class UserController {
   }
 
   async updateProfile(req: Request, res: Response, next: NextFunction) {
+    if (validateEmail(req.body.email)) {
+      return res.status(401).send({
+        message: "Email tidak valid."
+      });
+    }
+
+    if (validatePhoneNumber(req.body.phone_number)) {
+      return res.status(401).send({
+        message: "Nohp tidak valid."
+      });
+    }
+
     const user = await this.userRepository.findOneBy({
       id: req.params.user_id,
     })
@@ -179,4 +192,5 @@ export class UserController {
       });
     }
   }
+
 }

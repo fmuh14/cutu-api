@@ -4,6 +4,7 @@ import * as cors from 'cors';
 import { AppDataSource } from "./config/data-source";
 import { Routes } from "./routes"
 import 'dotenv/config'
+import { addKurir, autoExpireInvoice } from "./utils/automation";
 
 AppDataSource.initialize().then(async () => {
   const app = express();
@@ -34,5 +35,10 @@ AppDataSource.initialize().then(async () => {
   app.listen(process.env.PORT, () => {
     console.log(`running on ${process.env.PORT}`)
   });
+
+  const deleteTransactionEvery10s = setInterval(() => {
+    autoExpireInvoice()
+    addKurir()
+  }, 10 * 1000)
 
 }).catch(error => console.log(error))
