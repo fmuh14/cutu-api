@@ -88,7 +88,7 @@ export class TransaksiController {
         externalID: transaksi.id,
         amount: transaksi.total_harga,
         description: 'Invoice for Transaction #' + transaksi.id,
-        invoice_duration: 300,
+        invoice_duration: 60,
         items: [{
           name: 'Paket ' + paket.name,
           quantity: 1,
