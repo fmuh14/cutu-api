@@ -2,7 +2,6 @@ import { NextFunction, Request, Response } from "express"
 import { User } from "../entity/User"
 import { AppDataSource } from "../config/data-source"
 import { validateEmail, validatePassword, validatePasswordLength, validatePhoneNumber } from "../utils/validation"
-import { customAlphabet } from "nanoid"
 
 export class UserController {
 
@@ -20,9 +19,14 @@ export class UserController {
     }
 
     if (user.password === req.body.password) {
+      const data = {
+        id: user.id,
+        email: user.email,
+      }
+
       return res.status(200).send({
         message: "Login Berhasil!",
-        user_id: user.id,
+        user_id: user.id
       }
       )
     } else {
